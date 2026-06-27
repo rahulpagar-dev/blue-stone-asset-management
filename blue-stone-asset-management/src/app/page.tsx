@@ -1,65 +1,70 @@
 import Link from "next/link";
+import { ArrowRight, BarChart3, ShieldCheck, TrendingUp, Wallet } from "lucide-react";
 
-const highlightCards = [
+const highlights = [
   {
-    title: "Portfolio performance",
-    description: "View real-time asset allocation, returns, and wallet balances from a secure investor dashboard.",
-    href: "/dashboard",
+    title: "Performance",
+    description: "Track portfolio growth, benchmark comparisons, and key risk signals.",
+    href: "/performance",
+    icon: TrendingUp,
   },
   {
-    title: "Market insights",
-    description: "Access daily market updates, newsletters, and CEO letters for investor decision support.",
-    href: "/market-updates",
+    title: "Wallet",
+    description: "Review balances, allocations, and fund activity in one place.",
+    href: "/wallet",
+    icon: Wallet,
   },
   {
-    title: "Corporate information",
-    description: "Review newsroom coverage, investor relations disclosures, sustainability initiatives, and career opportunities.",
-    href: "/about",
+    title: "Insights",
+    description: "Use route-based pages for deeper analytics and updates.",
+    href: "/insights",
+    icon: BarChart3,
   },
 ];
 
 export default function Home() {
   return (
-    <div className="mx-auto min-h-[calc(100vh-72px)] max-w-7xl px-6 py-10 text-slate-100">
-      <section className="rounded-[2rem] border border-slate-800 bg-slate-900/90 p-10 shadow-2xl shadow-slate-950/40 ring-1 ring-slate-700/40">
-        <p className="mb-4 text-sm uppercase tracking-[0.35em] text-sky-300">
-          Institutional asset management
-        </p>
-        <h1 className="mb-6 max-w-3xl text-5xl font-semibold leading-tight text-white sm:text-6xl">
-          Confidence in every investment decision.
-        </h1>
-        <p className="mb-8 max-w-2xl text-lg leading-8 text-slate-300">
-          Blue Stone Asset Management delivers transparent portfolio oversight, market intelligence, and investor-grade digital experiences for modern wealth and institutions.
-        </p>
-        <div className="flex flex-wrap gap-4">
+    <div className="space-y-8">
+      <section className="rounded-[2rem] border border-border/70 bg-card p-8 shadow-sm md:p-10">
+        <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-2xl space-y-4">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-sm font-medium text-primary">
+              <ShieldCheck className="h-4 w-4" />
+              Server-rendered portfolio dashboard
+            </div>
+            <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+              A proper Next.js SSR experience for Blue Stone.
+            </h1>
+            <p className="text-lg text-muted">
+              The app now uses the Next.js app router with folder-based pages, a shared shell, and seamless home navigation from every route.
+            </p>
+          </div>
           <Link
-            href="/auth/signup"
-            className="inline-flex items-center rounded-full bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
+            href="/about"
+            className="inline-flex items-center justify-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
           >
-            Create account
-          </Link>
-          <Link
-            href="/auth/login"
-            className="inline-flex items-center rounded-full border border-slate-700 px-6 py-3 text-sm text-slate-100 transition hover:border-slate-500"
-          >
-            Sign in
+            Explore the app <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
 
-      <section className="mt-10 grid gap-6 lg:grid-cols-3">
-        {highlightCards.map((card) => (
-          <Link
-            key={card.href}
-            href={card.href}
-            className="group rounded-[1.5rem] border border-slate-800 bg-slate-900/85 p-8 transition hover:-translate-y-1 hover:border-slate-600"
-          >
-            <h2 className="text-2xl font-semibold text-white transition group-hover:text-sky-300">
-              {card.title}
-            </h2>
-            <p className="mt-4 text-slate-300">{card.description}</p>
-          </Link>
-        ))}
+      <section className="grid gap-4 md:grid-cols-3">
+        {highlights.map((item) => {
+          const Icon = item.icon;
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-2xl border border-border/70 bg-card p-6 shadow-sm transition hover:-translate-y-0.5 hover:border-primary/40"
+            >
+              <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h2 className="text-xl font-semibold text-foreground">{item.title}</h2>
+              <p className="mt-2 text-sm leading-6 text-muted">{item.description}</p>
+            </Link>
+          );
+        })}
       </section>
     </div>
   );

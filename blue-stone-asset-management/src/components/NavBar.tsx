@@ -1,23 +1,25 @@
 import Link from "next/link";
 
 const links = [
-  { href: "/about", label: "About Us" },
-  { href: "/newsroom", label: "Newsroom" },
+  { href: "/", label: "Home" },
+  { href: "/dashboard", label: "Dashboard" },
   { href: "/insights", label: "Insights" },
+  { href: "/market-updates", label: "Market Updates" },
+  { href: "/newsroom", label: "Newsroom" },
   { href: "/investor-relations", label: "Investor Relations" },
-  { href: "/sustainability", label: "Corporate Sustainability" },
+  { href: "/sustainability", label: "Sustainability" },
   { href: "/careers", label: "Careers" },
 ];
 
 export default function NavBar() {
   return (
-    <header className="border-b border-slate-700 bg-slate-950/95 backdrop-blur-lg">
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
+    <header className="border-b border-slate-800 bg-slate-950/95 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-4">
         <Link href="/" className="text-lg font-semibold tracking-tight text-slate-100">
           Blue Stone
         </Link>
 
-        <nav className="hidden items-center gap-6 lg:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-5 lg:flex">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -32,13 +34,13 @@ export default function NavBar() {
         <div className="flex items-center gap-3">
           <Link
             href="/auth/login"
-            className="rounded-full border border-slate-600 px-4 py-2 text-sm text-slate-100 transition hover:bg-slate-800"
+            className="rounded-full border border-slate-700 px-4 py-2 text-sm text-slate-100 transition hover:bg-slate-800"
           >
             Login
           </Link>
           <Link
             href="/auth/signup"
-            className="rounded-full bg-sky-500 px-4 py-2 text-sm text-slate-950 transition hover:bg-sky-400"
+            className="rounded-full bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 transition hover:bg-sky-400"
           >
             Sign Up
           </Link>

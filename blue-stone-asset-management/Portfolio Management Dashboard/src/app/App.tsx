@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, createContext, useContext, useRef } from "react";
 import {
   AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell,

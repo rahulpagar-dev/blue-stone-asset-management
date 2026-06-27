@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Footer";
-import NavBar from "@/components/NavBar";
+import { SiteShell } from "@/components/site-shell";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Blue Stone Asset Management",
-  description: "Explore investment services, investor resources, and portfolio performance.",
+  description: "Portfolio management dashboard converted to Next.js",
 };
 
 export default function RootLayout({
@@ -25,14 +24,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex min-h-screen flex-col bg-slate-950 text-slate-100">
-        <NavBar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <body className="min-h-full bg-[var(--background)] text-[var(--foreground)]">
+        <SiteShell>{children}</SiteShell>
       </body>
     </html>
   );
